@@ -8,5 +8,11 @@
 
 <body>
 	<h1>인덱스 화면입니다.</h1>
+		<sec:authorize access="!isAuthenticated()">
+			Login<br>
+		</sec:authorize>
+		<sec:authorize access="isAuthenticated()">
+			Logout<br>
+		</sec:authorize>
 </body>
 </html>

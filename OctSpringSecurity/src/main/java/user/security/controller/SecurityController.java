@@ -1,10 +1,12 @@
 package user.security.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import user.security.config.SecurityUser;
 import user.security.domain.Users;
 import user.security.service.UserService;
 
@@ -31,7 +33,8 @@ public class SecurityController {
 	}
 
 	@GetMapping("/admin")
-	public void forAdmin() {
+	public void forAdmin(@AuthenticationPrincipal SecurityUser user) {
+		System.out.println("user.getUsername() : "+user.getUsername());
 		System.out.println("Admin 요청입니다.");
 	}
 
